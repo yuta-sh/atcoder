@@ -13,13 +13,11 @@ function Main(input) {
   };
 
   const makeResult = (Ni) => {
-    let arrayNi = [];
     const NiString = String(Ni);
-    //   各桁の和を求める
-    for (let index = 0; index < NiString.length; index++) {
-      const NiNum = parseInt(NiString.slice(index, index + 1), 10);
-      arrayNi.push(NiNum);
-    }
+
+    const arrayNi = [...NiString].map((string) => {
+      return parseInt(string, 10);
+    });
 
     // A~Bまでのものであった場合にresultに入れる
     const sumNi = sum(...arrayNi);
