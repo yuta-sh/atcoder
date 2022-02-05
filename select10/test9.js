@@ -1,6 +1,5 @@
 function Main(input) {
-  input = input.trim().split("\n");
-  const reverseInputArray = input[0].split("").reverse();
+  let next = input.trim().replace("\n", "").split("").reverse().join("");
 
   const choice7 = ["dreamer"];
   const choice5 = ["dream", "erase"];
@@ -9,39 +8,30 @@ function Main(input) {
   const reverseChoice6 = choice6.map((str) => str.split("").reverse().join(""));
   const reverseChoice7 = choice7.map((str) => str.split("").reverse().join(""));
 
-  const fetchNextRevStr = (reverseInputArray) => {
+  const fetchNextRevStr = (reverseInput) => {
     if (
-      reverseChoice5.some(
-        (revStr) => reverseInputArray.slice(0, 5).join("") === revStr
-      )
+      reverseChoice5.some((revStr) => reverseInput.substring(0, 5) === revStr)
     ) {
-      return reverseInputArray.slice(5);
+      return reverseInput.substring(5);
     }
     if (
-      reverseChoice6.some(
-        (revStr) => reverseInputArray.slice(0, 6).join("") === revStr
-      )
+      reverseChoice6.some((revStr) => reverseInput.substring(0, 6) === revStr)
     ) {
-      return reverseInputArray.slice(6);
+      return reverseInput.substring(6);
     }
     if (
-      reverseChoice7.some(
-        (revStr) => reverseInputArray.slice(0, 7).join("") === revStr
-      )
+      reverseChoice7.some((revStr) => reverseInput.substring(0, 7) === revStr)
     ) {
-      return reverseInputArray.slice(7);
+      return reverseInput.substring(7);
     }
 
     throw new Error("no answer");
   };
 
   try {
-    let next = reverseInputArray;
-
-    do {
+    while (next.length != 0) {
       next = fetchNextRevStr(next);
-    } while (next.length != 0);
-
+    }
     console.log("YES");
   } catch (error) {
     console.log("NO");
@@ -49,6 +39,6 @@ function Main(input) {
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
-// Main(require("fs").readFileSync("./input.txt", "utf8"));
+Main(require("fs").readFileSync("./input.txt", "utf8"));
 // 本番は下記で提出
-Main(require("fs").readFileSync("/dev/stdin", "utf8"));
+// Main(require("fs").readFileSync("/dev/stdin", "utf8"));
