@@ -35,19 +35,16 @@ const nextChar = (str) => {
   );
 };
 
-let isYes = false;
-let nextS = [...S];
 for (let i = 0; i < lastNum - baseNum + 1; i++) {
-  nextS = [...nextS.map((str) => nextChar(str))];
+  const Sstr = S.map((str) =>
+    nextChar(String.fromCharCode(str.charCodeAt(0) + i))
+  ).join("");
 
-  // S.map((str) => nextChar(String.fromCharCode(str.charCodeAt(0) + i)));
-  if (nextS.join("") === Tstr) {
+  if (Sstr === Tstr) {
     console.log("Yes");
-    // isYes = true;
+
     return;
   }
 }
 
-// if (!isYes) {
 console.log("No");
-// }
