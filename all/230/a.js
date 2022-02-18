@@ -1,16 +1,16 @@
 // ローカルは下記で実行
 // -------------------------------------------------------------
-const input = require("fs")
-  .readFileSync("./input.txt", "utf8")
-  .trim()
-  .split("\n");
+// const input = require("fs")
+//   .readFileSync("./input.txt", "utf8")
+//   .trim()
+//   .split("\n");
 
 // 本番は下記で提出
 // -------------------------------------------------------------
-// const input = require("fs")
-//   .readFileSync("/dev/stdin", "utf8")
-//   .trim()
-//   .split("\n");
+const input = require("fs")
+  .readFileSync("/dev/stdin", "utf8")
+  .trim()
+  .split("\n");
 
 // -------------------------------------------------------------
 
@@ -26,3 +26,16 @@ if (num >= 42) {
 } else {
   console.log("AGC" + String(num).padStart(3, "0"));
 }
+
+// const fetchDigit = (num) => {
+//   return String(num).split("").length;
+// };
+
+// const fetch0PaddingString = (num) => {
+//   console.log(num);
+//   return "0".repeat(3 - fetchDigit(num)) + String(num);
+// };
+// const AGC = "AGC";
+// const count =
+//   num >= 42 ? fetch0PaddingString(num + 1) : fetch0PaddingString(num);
+// console.log(AGC + count);
