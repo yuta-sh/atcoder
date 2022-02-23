@@ -16,16 +16,19 @@ const input = require("fs")
 
 // [memo]かかった時間:11:57
 // 最近b問題でハッシュマップの利用が多いなあ。これには慣れてきた
+// そうか、sliceはarrayでもstringでもあるのか。
+// for文でなくてオブジェクト指向的に変えてみた
 
 // 以降処理記載
 const n = Number(input[0]);
+const aList = input.slice(1);
 
 const set = new Set();
 
-for (let i = 1; i < n + 1; i++) {
-  const iStr = input[i].slice(2);
+aList.forEach((ai) => {
+  const iStr = ai.slice(2);
   if (!set.has(iStr)) {
     set.add(iStr);
   }
-}
+});
 console.log(set.size);
